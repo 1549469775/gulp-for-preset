@@ -1,0 +1,1 @@
+"use strict";var _toolkit=_interopRequireDefault(require("./toolkit.js"));function _interopRequireDefault(e){return e&&e.__esModule?e:{default:e}}require("loadsh");var matrix=_toolkit.default.makeMatrix();console.log(matrix),console.log(_toolkit.default.shuffle([0,1,2,3,4,5,6,7,8,100]));

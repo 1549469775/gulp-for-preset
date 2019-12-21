@@ -6,7 +6,9 @@ const matrixToolkit = {
     },
 
     makeMatrix(v = 0) {
-        return Array.from({length: 9}, () => this.makeRow(v))
+        return Array.from({
+            length: 9
+        }, () => this.makeRow(v))
     },
 
     /**
@@ -24,4 +26,4 @@ const matrixToolkit = {
 };
 
 
-module.exports = matrixToolkit;
+export default matrixToolkit;
