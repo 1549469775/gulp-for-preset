@@ -1,5 +1,6 @@
 import toolkit from './toolkit.js'
 import 'loadsh'
+import './a.js'
 const matrix = toolkit.makeMatrix();
 
 

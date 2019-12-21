@@ -1,3 +1,4 @@
+import './a.js'
 const matrixToolkit = {
     makeRow(v = 0) {
         const array = new Array(9);
