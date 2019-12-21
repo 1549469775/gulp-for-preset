@@ -7,8 +7,6 @@ const {
 } = require('gulp');
 const clean = require('gulp-clean');
 const gulpif = require('gulp-if');
-const uglify = require('gulp-uglify');
-const babel = require('gulp-babel');
 const htmlmin = require('gulp-htmlmin');
 const fs = require('fs');
 // process.env.NODE_ENV
@@ -26,6 +24,7 @@ task('clean', function (done) {
     }
     done();
 })
+
 task('minifyHTML', () => {
     return src('src/*.html')
         .pipe(htmlmin({
@@ -34,11 +33,10 @@ task('minifyHTML', () => {
         .pipe(dest('./dist'));
 });
 task('transformJS', function () {
+    const config = require('./webpack.dev.config.js');
+    const webpack = require('webpack-stream');
     return src('./src/js/**/*.js')
-        .pipe(babel({
-            presets: ['@babel/env']
-        })) //支持es6
-        .pipe(uglify())
+        .pipe(webpack(config)) //支持es6
         .pipe(dest("./dist/js"))
 })
 task('default', series('clean', parallel('transformJS', 'minifyHTML')))
