@@ -32,13 +32,13 @@ task('minifyHTML', () => {
         }))
         .pipe(dest('./dist'));
 });
-task('transformJS', function () {
-    const config = require('./webpack.dev.config.js');
+task('transform', function () {
+    const config = require('./build/webpack.dev.config.js');
     const webpack = require('webpack-stream');
     return src('./src/js/**/*.js')
         .pipe(webpack(config)) //支持es6
         .pipe(dest("./dist/js"))
 })
-task('default', series('clean', parallel('transformJS', 'minifyHTML')))
+task('default', series('clean', parallel('transform', 'minifyHTML')))
 
 // module.exports = 
